@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import CounterStore from './stores/counter';
+import Counter from './Counter';
+import { Provider } from 'mobx-react'; // MobX 에서 사용하는 Provider
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const counter = new CounterStore();
+
+export default function App() {
+    return (
+        <Provider counter={counter}>
+            <div className='App'>
+                <h1>function component</h1>
+                <Counter />
+            </div>
+        </Provider>
+    );
 }
-
-export default App;
